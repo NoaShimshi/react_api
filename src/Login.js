@@ -16,11 +16,11 @@ import {useState} from "react"
     else{
       if(name!="" || password!=""){
         debugger
-        // window.open("/user/home")
-        fetch(`https://jsonplaceholder.typicode.com/users?username=${name}`)
-        .then((response) => response.json())
-        .then((data)=>data["id"])
-        .then((id)=>alert(id));
+         window.open("/user/home")
+        // fetch(`https://jsonplaceholder.typicode.com/users?username=${name}`)
+        // .then((response) => response.json())
+        // .then((data)=>data["id"])
+        // .then((id)=>alert(id));
       }
     }
  
