@@ -1,6 +1,10 @@
 function Home(){
+    debugger
+    var json =localStorage.getItem('Bret');
+    var data=JSON.parse(json)
+    console.log(data)
 return (
-    <p>Home sweet home</p>
+    <p>hi</p>
 )
 }
 export default Home;

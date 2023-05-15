@@ -1,43 +1,48 @@
 import {useState} from "react"
  function Login(){
-   const [name,setName]=useState("");
+   const [userName,setUserName]=useState("");
    const [password,setPassword]=useState("");
 
-   const changeName= (event)=>{
-    setName(event.target.value);
+   const changeUserName= (event)=>{
+    setUserName(event.target.value);
    }
    const changePassword= (event)=>{
     setPassword(event.target.value);
    }
-   const checkUser= ()=>{
-    if (name=="" || password==""){
-      alert("All fields must be filled");
-    }
-    else{
-      if(name!="" || password!=""){
-        debugger
-         window.open("/user/home")
-        // fetch(`https://jsonplaceholder.typicode.com/users?username=${name}`)
-        // .then((response) => response.json())
-        // .then((data)=>data["id"])
-        // .then((id)=>alert(id));
-      }
-    }
- 
+   const checkUser= ()=>{  
+        fetch(`https://jsonplaceholder.typicode.com/users?username=${userName}`)
+        .then((response) => response.json())
+        .then((data)=>data[0])
+        .then((user)=>{
+          var pass=user.address.geo.lat.slice(-4);
+          if(pass==password){
+            localStorage.setItem("user", JSON.stringify(user));
+            window.open("/user/home")
+          }
+          else{
+            alert("the password is incorrect")
+            setPassword("");
+          }
+        }).catch((error)=>{
+          setPassword("");
+          setUserName("");
+          alert(error)})  
   }
   
 
   
    return (
     <div>
-      <lable>User name</lable><br/>
+      <label>User name</label><br/>
       <input
-      value={name}
-      onChange={changeName}
+      required
+      value={userName}
+      onChange={changeUserName}
       placeholder="name"
       />
-      <lable>Password</lable><br/>
+      <label>Password</label><br/>
       <input
+      required
       value={password}
       onChange={changePassword}
       placeholder="password"
