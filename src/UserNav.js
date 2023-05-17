@@ -1,7 +1,10 @@
 import { Outlet, Link } from "react-router-dom";
 
 export function UserNav() {
-  const handleLogout =()=> {localStorage.removeItem("user")};
+  const handleLogout =()=> {
+    localStorage.removeItem("user")
+    localStorage.removeItem("todosList")
+  };
   var userJson=localStorage.getItem("user");
   var user=JSON.parse(userJson)
   var name=user.name;

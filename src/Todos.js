@@ -7,30 +7,78 @@ function Todos() {
 
   const [todos, setTodos] = useState([]);
   const [findTodos, setFindTodos] = useState(true);
+  
+  const handleCheckboxChange = (todoId) => {
+    const updatedTodos = todos.map((todo) =>{
+      if (todo.id === todoId) {
+        return { ...todo, completed: !todo.completed };
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+    localStorage.setItem("todosList", JSON.stringify(updatedTodos));
+  };
+
+  const sortHandleChange= (e)=>{
+
+    const sort = e.target.value;
+    var updatedTodos=[...todos]
+    if(sort==="completed"){
+     updatedTodos = [...todos].sort((x, y)=> Number(x.completed) - Number(y.completed))
+    }
+    if(sort==="abc")
+    {
+      updatedTodos=[...todos].sort((x,y)=>x.title.localeCompare(y.title));
+    }
+    setTodos(updatedTodos);
+    localStorage.setItem("todosList", JSON.stringify(updatedTodos));
+
+  };
 
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userid}`)
+    var todosFromLocal=JSON.parse(localStorage.getItem("todosList"))
+    if(Array.isArray(todosFromLocal)){
+      setTodos(todosFromLocal);
+      setFindTodos(true);
+    }
+    else{
+     fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userid}`)
       .then((response) => response.json())
-      .then((data) => setTodos(data))
-      .catch(() => setFindTodos(false));
-  }, [userid]);
+      .then((data) => {
+        setTodos(data);
+        localStorage.setItem("todosList", JSON.stringify(data));
+      })
+      .catch(() => setFindTodos(false))
+    }
+   },[]);
+   
 
   if (findTodos) {
     let todosHtml = todos.map((todo) => (
         <div key={todo.id}>
-            <input checked={todo.completed} type="checkbox"/>
+            <input checked={todo.completed} onChange={() => handleCheckboxChange(todo.id)} type="checkbox"/>
             <label>{todo.title}</label>
         </div>
     ));
     return (
       <div>
-        {todosHtml}
-      </div>
+      
+       <label for="sort">Select a sort form:</label>
+
+       <select id="cars" onChange={sortHandleChange}>
+         <option value="abc">abc</option>
+         <option value="completed">completed</option>
+       </select>
+      
+       <div>
+       {todosHtml}
+       </div>
+      </div> 
     );
   }
 
   return (
-    <h2>There are no posts</h2>
+    <h2>There are no todos</h2>
   );
 }
 
