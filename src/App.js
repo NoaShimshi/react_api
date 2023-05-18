@@ -23,10 +23,9 @@ export default function App() {
           <Route path="posts" element={<Posts/>} />
           <Route path="info" element={<Info/>} />
         </Route>
-        {/* <Navigate to="/login" />; */}
+        {/* <Navigate to="/login" />; */}       
         
-        
-        <Route path="user/Albums/photos" element={<Photos/>}/>
+        <Route path="user/albums/:albumId/photos" element={<Photos/>}/>
 
       </Routes>
     </BrowserRouter>

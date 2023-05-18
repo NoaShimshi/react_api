@@ -1,7 +1,10 @@
 import {useState} from "react"
+import { useNavigate } from "react-router-dom";
+
  function Login(){
    const [userName,setUserName]=useState("");
    const [password,setPassword]=useState("");
+   const navigate=useNavigate(); 
 
    const changeUserName= (event)=>{
     setUserName(event.target.value);
@@ -9,7 +12,7 @@ import {useState} from "react"
    const changePassword= (event)=>{
     setPassword(event.target.value);
    }
-   const checkUser= ()=>{  
+   const checkUser= ()=>{ 
         fetch(`https://jsonplaceholder.typicode.com/users?username=${userName}`)
         .then((response) => response.json())
         .then((data)=>data[0])
@@ -17,7 +20,7 @@ import {useState} from "react"
           var pass=user.address.geo.lat.slice(-4);
           if(pass==password){
             localStorage.setItem("user", JSON.stringify(user));
-            window.open("/user/home")
+            navigate("/user/home")
           }
           else{
             alert("the password is incorrect")

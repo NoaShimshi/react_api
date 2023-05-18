@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Albums() {
   let jsonUser = localStorage.getItem("user");
@@ -7,6 +9,18 @@ function Albums() {
 
   const [albums, setAlbums] = useState([]);
   const [findAlbums, setFindAlbums] = useState(true);
+  const navigate=useNavigate(); 
+  // const [findPhotos, setFindPhotos] = useState(true);
+
+  // const [currentAlbum,setCurrentAlbum]=useState();
+//   const [currentPhotos,setCurrentPhotos]=useState();
+//   const [selectedComments,setSelectedComments]=useState(false);
+
+  const selectedAlbum = (albumId) => {
+    // setCurrentAlbum(albumId);
+    navigate(`/user/albums/${albumId}/photos`);
+  }
+
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/albums?userId=${userid}`)
@@ -16,7 +30,7 @@ function Albums() {
   },[userid]);
 
   if (findAlbums) {
-    let albumsHtml = albums.map((album) => <p key={album.id}> {album.title}</p>);
+    let albumsHtml = albums.map((album) => (<Link key={album.id} to={`/user/albums/${album.id}/photos`}> {album.title}</Link>));
     return (
       <div>
         {albumsHtml}
