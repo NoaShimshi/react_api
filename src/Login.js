@@ -5,7 +5,18 @@ import './login.css';
  function Login(){
    const [userName,setUserName]=useState("");
    const [password,setPassword]=useState("");
+   const [isSubmitFocused, setIsSubmitFocused] = useState(false);
    const navigate=useNavigate(); 
+
+
+   const handleFocus = () => {
+    setIsSubmitFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsSubmitFocused(false);
+  };
+
 
    const changeUserName= (event)=>{
     setUserName(event.target.value);
@@ -53,7 +64,13 @@ import './login.css';
       placeholder="password"
       type="password"
       /><br/>
-        <input type="submit" value="Submit"/>
+        <input 
+        type="submit"
+         value="Submit"
+         className={isSubmitFocused ? "bold-on-submit" : ""}
+         onFocus={handleFocus}
+         onBlur={handleBlur}
+         />
     </form>
    )
 }

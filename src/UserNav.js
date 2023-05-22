@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-
+import "./UserNav.css"
 export function UserNav() {
   const handleLogout =()=> {
     localStorage.removeItem("user")
@@ -12,7 +12,7 @@ export function UserNav() {
   return (
     <>
       <nav>
-        <ul>
+        <ul className="nav-links">
         <li>
            <h3>hi {user.name}</h3>
           </li>
