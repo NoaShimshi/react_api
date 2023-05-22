@@ -12,7 +12,8 @@ import { useNavigate } from "react-router-dom";
    const changePassword= (event)=>{
     setPassword(event.target.value);
    }
-   const checkUser= ()=>{ 
+   const checkUser= (event)=>{ 
+        event.preventDefault();
         fetch(`https://jsonplaceholder.typicode.com/users?username=${userName}`)
         .then((response) => response.json())
         .then((data)=>data[0])
@@ -35,15 +36,15 @@ import { useNavigate } from "react-router-dom";
 
   
    return (
-    <div>
-      <label>User name</label><br/>
+    <form  onSubmit={checkUser}>
+      <label>User name:</label>
       <input
       required
       value={userName}
       onChange={changeUserName}
       placeholder="name"
-      />
-      <label>Password</label><br/>
+      /><br/>
+      <label>Password:</label>
       <input
       required
       value={password}
@@ -51,8 +52,8 @@ import { useNavigate } from "react-router-dom";
       placeholder="password"
       type="password"
       /><br/>
-        <button onClick={checkUser}>Login</button>
-    </div>
+        <input type="submit" value="Submit"/>
+    </form>
    )
 }
 export default Login;
