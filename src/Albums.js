@@ -16,10 +16,10 @@ function Albums() {
 //   const [currentPhotos,setCurrentPhotos]=useState();
 //   const [selectedComments,setSelectedComments]=useState(false);
 
-  const selectedAlbum = (albumId) => {
-    // setCurrentAlbum(albumId);
-    navigate(`/user/albums/${albumId}/photos`);
-  }
+  // const selectedAlbum = (albumId) => {
+  //   // setCurrentAlbum(albumId);
+  //   navigate(`/user/albums/${albumId}/photos`);
+  // }
 
 
   useEffect(() => {
