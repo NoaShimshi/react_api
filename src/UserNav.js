@@ -7,29 +7,29 @@ export function UserNav() {
   };
   var userJson=localStorage.getItem("user");
   var user=JSON.parse(userJson)
-  var name=user.name;
+  
 
   return (
     <>
       <nav>
         <ul>
         <li>
-           <h3>hi {name}</h3>
+           <h3>hi {user.name}</h3>
           </li>
           <li>
-            <Link to="/user/todos">Todos</Link>
+            <Link to={`/users/${user.id}/todos`}>Todos</Link>
           </li>
           <li>
-            <Link to="/user/posts">Posts</Link>
+            <Link to={`/users/${user.id}/posts`}>Posts</Link>
           </li>
           <li>
-            <Link to="/user/albums">Albums</Link>
+            <Link to={`/users/${user.id}/albums`}>Albums</Link>
           </li>
           <li>
-            <Link to="/user/info">Info</Link>
+            <Link to={`/users/${user.id}/info`}>Info</Link>
           </li>
           <li>
-            <Link to="/login" onClick={handleLogout}>Logout</Link>
+            <Link to={`/login`} onClick={handleLogout}>Logout</Link>
           </li>
         </ul>
       </nav>

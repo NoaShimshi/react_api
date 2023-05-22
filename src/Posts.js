@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useParams} from 'react-router-dom';
 import "./Posts.css"
 
 function Posts() {
-  let jsonUser = localStorage.getItem("user");
-  let user = JSON.parse(jsonUser);
-  let userid = user.id;
+  let {userid}=useParams();
 
   const [posts, setPosts] = useState([]);
   const [findPosts, setFindPosts] = useState(true);

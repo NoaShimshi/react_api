@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 
 function Todos() {
-  let jsonUser = localStorage.getItem("user");
-  let user = JSON.parse(jsonUser);
-  let userid = user.id;
+  let {userid}=useParams();
 
   const [todos, setTodos] = useState([]);
   const [findTodos, setFindTodos] = useState(true);

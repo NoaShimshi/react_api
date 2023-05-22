@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 
 function Albums() {
-  let jsonUser = localStorage.getItem("user");
-  let user = JSON.parse(jsonUser);
-  let userid = user.id;
+  let {userid}=useParams();
+
+
 
   const [albums, setAlbums] = useState([]);
   const [findAlbums, setFindAlbums] = useState(true);
@@ -30,7 +30,7 @@ function Albums() {
   },[userid]);
 
   if (findAlbums) {
-    let albumsHtml = albums.map((album) => (<Link key={album.id} to={`/user/albums/${album.id}/photos`}> {album.title}</Link>));
+    let albumsHtml = albums.map((album) => (<Link key={album.id} to={`/users/${userid}/albums/${album.id}/photos`}> {album.title}</Link>));
     return (
       <div>
         {albumsHtml}

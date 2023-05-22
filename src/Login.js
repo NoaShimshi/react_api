@@ -20,7 +20,7 @@ import { useNavigate } from "react-router-dom";
           var pass=user.address.geo.lat.slice(-4);
           if(pass==password){
             localStorage.setItem("user", JSON.stringify(user));
-            navigate("/user/home")
+            navigate(`/users/${user.id}/home`)
           }
           else{
             alert("the password is incorrect")

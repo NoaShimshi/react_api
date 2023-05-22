@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 
 function Photos() {
-  let jsonUser = localStorage.getItem('user');
-  let user = JSON.parse(jsonUser);
-  let userid = user.id;
+  let {userid}=useParams();
+
   let { albumId } = useParams();
   const [photos, setPhotos] = useState([]);
   const [findPhotos, setFindPhotos] = useState(true);
@@ -13,9 +12,20 @@ function Photos() {
   const [hasMore, setHasMore] = useState(true);
   const photosContainerRef = useRef(null);
 
+  const handleScroll = () => {
+    const container = photosContainerRef.current;
+    const containerHeight = container.offsetHeight;
+    const scrollTop = container.scrollTop;
+    const scrollHeight = container.scrollHeight;
+
+    if (scrollHeight - scrollTop - containerHeight <= 10 && !isLoading && hasMore) {
+      setIsLoading(true);
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
   useEffect(() => {
     fetchPhotos();
-  }, [userid, albumId]);
+  },[userid,albumId,page]);
 
   const fetchPhotos = () => {
     fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}&_page=${page}&_limit=8`)
@@ -31,17 +41,7 @@ function Photos() {
       .catch(() => setFindPhotos(false));
   };
 
-  const handleScroll = () => {
-    const container = photosContainerRef.current;
-    const containerHeight = container.offsetHeight;
-    const scrollTop = container.scrollTop;
-    const scrollHeight = container.scrollHeight;
-
-    if (scrollHeight - scrollTop - containerHeight <= 10 && !isLoading && hasMore) {
-      setIsLoading(true);
-      setPage((prevPage) => prevPage + 1);
-    }
-  };
+  
 
   useEffect(() => {
     const container = photosContainerRef.current;
