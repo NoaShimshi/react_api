@@ -64,7 +64,6 @@ function Todos() {
     return (
       <div className="TodoContainer">
         <label htmlFor="sort">Select a sort form:</label>
-
         <select id="cars" className="SortSelect" onChange={sortHandleChange}>
           <option value="abc">abc</option>
           <option value="completed">completed</option>

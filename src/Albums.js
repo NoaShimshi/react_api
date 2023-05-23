@@ -30,7 +30,7 @@ function Albums() {
   },[userid]);
 
   if (findAlbums) {
-    let albumsHtml = albums.map((album) => (<Link key={album.id} to={`/users/${userid}/albums/${album.id}/photos`}> {album.title}</Link>));
+    let albumsHtml = albums.map((album) => (<div><Link key={album.id} to={`/users/${userid}/albums/${album.id}/photos`}> {album.title}</Link><br></br></div>));
     return (
       <div>
         {albumsHtml}
