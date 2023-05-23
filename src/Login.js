@@ -48,7 +48,8 @@ import './login.css';
 
   
    return (
-    <form  onSubmit={checkUser}>
+    <div classNmame="centered-container">
+    <form className="formSubmit"  onSubmit={checkUser}>
       <label>User name:</label>
       <input
       required
@@ -72,6 +73,7 @@ import './login.css';
          onBlur={handleBlur}
          />
     </form>
+    </div>
    )
 }
 export default Login;

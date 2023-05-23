@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link,useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import "./Posts.css"
 
 function Posts() {
@@ -58,7 +58,7 @@ function Posts() {
      <div  style={{ visibility: post.id === currentPost ? 'visible' : 'collapse',display:post.id === currentPost ? 'flex' : 'none' }}>
       <button onClick={displayComments}> 
         comments
-      </button>
+      </button> 
       <div style={{ visibility: post.id === selectedComments ? 'visible' : 'collapse' ,display:post.id === selectedComments ? 'flex' : 'none'}}>
         {currentComments}
       </div>

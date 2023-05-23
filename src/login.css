@@ -1,5 +1,6 @@
 body {
   background-color: beige;
+  
 }
 
 input {
@@ -16,3 +17,9 @@ input {
 .bold-on-submit:focus {
   font-weight: bold;
 }
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
