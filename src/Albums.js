@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams,useNavigate } from "react-router-dom";
+import "./Albums.css"
 
 function Albums() {
   let {userid}=useParams();
@@ -32,7 +33,7 @@ function Albums() {
   if (findAlbums) {
     let albumsHtml = albums.map((album) => (<div><Link key={album.id} to={`/users/${userid}/albums/${album.id}/photos`}> {album.title}</Link><br></br></div>));
     return (
-      <div>
+      <div className="albumsDiv">
         {albumsHtml}
       </div>
     );

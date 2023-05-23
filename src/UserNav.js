@@ -14,7 +14,7 @@ export function UserNav() {
       <nav>
         <ul className="nav-links">
         <li>
-           <h3>hi {user.name}</h3>
+           <h3>Hi {user.name}</h3>
           </li>
           <li>
             <Link to={`/users/${user.id}/todos`}>Todos</Link>
