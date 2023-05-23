@@ -1,20 +1,22 @@
+import './Todo.css';
+
 function Info(){
     var userJson=localStorage.getItem("user");
     var user=JSON.parse(userJson);
 return (
-    <div>
-        <h1>name: {user.name}</h1>
-        <h3>phone: {user.phone}</h3>
-        <h3>email: {user.email}</h3>
+    <div className="TodoContainer">
+        <h1>Name: {user.name}</h1>
+        <h3>Phone: {user.phone}</h3>
+        <h3>Email: {user.email}</h3>
         <br/>
-        <h2>address:</h2><br/>
-        <h3>street: {user.address.street}</h3>
-        <h3>suite: {user.address.suite}</h3>
-        <h3>city: {user.address.city}</h3>
-        <h3>zipcode: {user.address.zipcode}</h3>
+        <h2>Address:</h2>
+        <h3>Street: {user.address.street}</h3>
+        <h3>Suite: {user.address.suite}</h3>
+        <h3>City: {user.address.city}</h3>
+        <h3>Zipcode: {user.address.zipcode}</h3>
         <br/>
-        <h3>website: {user.website}</h3>
-        <h3>company name: {user.company.name}</h3>
+        <h3>Website: {user.website}</h3>
+        <h3>Company name: {user.company.name}</h3>
 
     </div>
 );

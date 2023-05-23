@@ -69,7 +69,7 @@ function Photos() {
     ));
 
     return (
-      <div ref={photosContainerRef} style={{ height: '100vh', overflowY: 'scroll' }}>
+      <div ref={photosContainerRef} style={{ height: '100vh', overflowY: 'scroll' , marginTop: '0'}}>
         <div style={{ minHeight: '100%' }}>
           {photosHtml}
         </div>
