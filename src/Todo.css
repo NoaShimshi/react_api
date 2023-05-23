@@ -1,0 +1,27 @@
+.TodoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px; /* Adjust the margin as per your preference */
+  }
+  
+  .TodoList {
+    width: 400px; /* Adjust the width as per your preference */
+  }
+  
+  .TodoList div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Adjust the margin as per your preference */
+  }
+  
+  .TodoCheckbox {
+    margin-right: 10px; /* Adjust the margin as per your preference */
+  }
+  
+  .SortSelect {
+    margin-bottom: 20px; /* Adjust the margin as per your preference */
+  }
+
+  

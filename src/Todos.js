@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './Todo.css';
 
 
 function Todos() {
@@ -61,19 +62,19 @@ function Todos() {
         </div>
     ));
     return (
-      <div>
-      
-       <label for="sort">Select a sort form:</label>
+      <div className="TodoContainer">
+        <label htmlFor="sort">Select a sort form:</label>
 
-       <select id="cars" onChange={sortHandleChange}>
-         <option value="abc">abc</option>
-         <option value="completed">completed</option>
-       </select>
-      
-       <div>
-       {todosHtml}
-       </div>
-      </div> 
+        <select id="cars" className="SortSelect" onChange={sortHandleChange}>
+          <option value="abc">abc</option>
+          <option value="completed">completed</option>
+        </select>
+
+        <div className="TodoList">
+          {todosHtml}
+        </div>
+      </div>
+
     );
   }
 
